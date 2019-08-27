@@ -1,3 +1,5 @@
+package com.ritesh;
+
 public class MyThread implements Runnable
 {
     String str;
@@ -6,7 +8,6 @@ public class MyThread implements Runnable
         this.str = str;
     }
 
-    @Override
     public void run()
     {
         System.out.println(str);

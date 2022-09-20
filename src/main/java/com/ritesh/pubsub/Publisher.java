@@ -9,17 +9,21 @@ public class Publisher
         {
             try
             {
-                while(Constant.data.size() <= Constant.MAX_CAPACITY)
+                while(Constant.data.size() < Constant.MAX_CAPACITY)
                 {
+                    System.out.println("Data Size: "+Constant.data.size());
                     while(Constant.data.size() == 3)
                     {
                         this.wait();
                     }
-                    Constant.data.add("Data "+count);
+                    String message = "Data "+count;
+                    Constant.data.add(message);
                     count++;
-                    System.out.println("Publisher Thread: " + Thread.currentThread().getName());
-                    System.out.println("Message Published | "+"Data "+count);
+                    String log = "Publisher Thread | " + Thread.currentThread().getName()
+                            + " | Message Published | "+message;
+                    System.out.println(log);
                     this.notifyAll();
+                    Thread.sleep(1000);
                 }
             }
             catch (InterruptedException ex){

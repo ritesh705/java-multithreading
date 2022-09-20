@@ -7,17 +7,18 @@ public class Consumer
         synchronized (this) {
             try
             {
-                while(Constant.data.size() > 0)
+                while(Constant.MAX_CAPACITY > 0)
                 {
                     while(Constant.data.size() == 0)
                     {
                         this.wait();
                     }
-                    System.out.println("Consumer Thread: " + Thread.currentThread().getName());
-                    System.out.println("Message Consumed: "+Constant.data.get(0));
-                    Thread.sleep(500);
+                    String log = "Consumer Thread | " +Thread.currentThread().getName()
+                            +" | Message Consumed | "+Constant.data.get(0);
+                    System.out.println(log);
                     Constant.data.remove(0);
                     this.notifyAll();
+                    Thread.sleep(1000);
                 }
             }
             catch (InterruptedException e)

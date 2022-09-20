@@ -5,8 +5,7 @@ public class PubSubThreadProgram
 {
     int count = 0;
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws InterruptedException {
         PubSubThreadProgram obj = new PubSubThreadProgram();
         new Thread(()-> obj.publishData()).start();
         new Thread(() -> obj.consumeData()).start();
